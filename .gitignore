@@ -1,0 +1,15 @@
+# node_modules
+package-lock.json
+# /build
+# .env
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+# Node
+node_modules/
+dist/
+# IDEs/editors
+.vscode/
+.idea/
+.env
