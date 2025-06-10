@@ -117,7 +117,9 @@ def process_image():
         # Get the base64 image data from the request
         data = request.json
         image_data = data['image'].split(',')[1]  # Remove the data URL prefix
-        plate_img_path = "C:\\Users\\aliaa\\Downloads\\Deploy\\tailadmin-free-tailwind-dashboard-template-main\\plate.jpg"
+        # plate_img_path = "C:\\Users\\aliaa\\Downloads\\Deploy\\tailadmin-free-tailwind-dashboard-template-main\\plate.jpg"
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        plate_img_path = os.path.join(BASE_DIR, "plate.jpg")
         
         # Save the uploaded image temporarily
         temp_img_path = "temp_upload.jpg"
