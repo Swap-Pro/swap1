@@ -75,6 +75,14 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'Swap'
-          slot-name: 'Production'
-          
+          app-name: 'SWAPRO'
+          slot-name: 'production'
+          package: release.zip
+
+      - name: 'Logout from Azure'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: 'Set up Python version'
+        uses: actions/setup-python@v5
