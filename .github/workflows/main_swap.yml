@@ -65,12 +65,11 @@ jobs:
         run: unzip release.zip
 
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BDA623F819014F2ABC314020D10F7D97 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_EEEFE7F9B27547DEA35A82671F8E1483 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7E2EDD41F51F4D2681E79E840E17A77C }}
+      - - name: Login to Azure
+  uses: azure/login@v1          # v1 is fine when you pass the full JSON
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
