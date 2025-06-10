@@ -17,7 +17,7 @@ CORS(app)
 # Load model
 rf = Roboflow(api_key=os.getenv('ROBOFLOW_API_KEY'))
 project = rf.workspace().project("car-plate-mav1h-rhegv")
-model = project.version(3).model
+model = project.version(1).model
 
 def process_vehicle_plate(vehicle_img_path, plate_img_path, model):
     """
