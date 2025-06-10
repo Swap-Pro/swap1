@@ -7,7 +7,8 @@
 # flask-cors==4.0.0
 
 # ROBOFLOW_API_KEY == MNbIhwpAq2AETXba1jPA
-opencv-python
+# opencv-python
+opencv-python-headless
 numpy
 matplotlib
 python-dotenv
