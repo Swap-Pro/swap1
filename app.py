@@ -17,7 +17,7 @@ CORS(app)
 # Load model
 rf = Roboflow(api_key=os.getenv('ROBOFLOW_API_KEY'))
 project = rf.workspace().project("car-plate-mav1h-rhegv")
-model = project.version(1).model
+model = project.version(3).model
 
 def process_vehicle_plate(vehicle_img_path, plate_img_path, model):
     """
@@ -120,7 +120,7 @@ def process_image():
         # plate_img_path = "C:\\Users\\aliaa\\Downloads\\Deploy\\tailadmin-free-tailwind-dashboard-template-main\\plate.jpg"
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         plate_img_path = os.path.join(BASE_DIR, "plate.jpg")
-        
+
         # Save the uploaded image temporarily
         temp_img_path = "temp_upload.jpg"
         with open(temp_img_path, 'wb') as f:
