@@ -65,10 +65,10 @@ jobs:
         run: unzip release.zip
 
       
-      - - name: Login to Azure
-  uses: azure/login@v1          # v1 is fine when you pass the full JSON
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to Azure
+        uses: azure/login@v1          # v1 is fine when you pass the full JSON
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 
       - name: 'Deploy to Azure Web App'
