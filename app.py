@@ -17,7 +17,25 @@ CORS(app)
 # Load model
 rf = Roboflow(api_key=os.getenv('ROBOFLOW_API_KEY'))
 project = rf.workspace().project("car-plate-mav1h-rhegv")
-model = project.version(1).model
+# model = project.version(1).model
+
+VERSIONS_TO_TRY = [1, 3]        # order matters: tries 1 first, then 3
+model = None
+last_err = None
+
+for v in VERSIONS_TO_TRY:
+    try:
+        print(f"Trying Roboflow model v{v} …", flush=True)
+        model = project.version(v).model
+        print(f"✅ Loaded Roboflow version {v}", flush=True)
+        break                           # success → exit the loop
+    except RuntimeError as e:           # version not present
+        print(f"Version {v} failed: {e}", flush=True)
+        last_err = e
+
+# If none of the versions worked, crash so the log stream shows why
+if model is None:
+    raise last_err or RuntimeError("No Roboflow version succeeded.")
 
 def process_vehicle_plate(vehicle_img_path, plate_img_path, model):
     """
